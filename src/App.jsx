@@ -11,15 +11,15 @@ function App() {
 
   const handleSearch = () => {
     const api_key = import.meta.env.VITE_MOVIE_DB_API_KEY;
-    const base_movies_api_url = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${serchText}`
+    const base_movies_api_url = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${searchMovie}`
 
     fetch(base_movies_api_url)
       .then((response) => response.json())
       .then((data) => {
         setMovie(data.results || []);
       })
-      .catch((error) => {
-        console.error("Errore durante la ricerca dei film:", error);
+      .catch((err) => {
+        console.error(err);
       });
   };
 
