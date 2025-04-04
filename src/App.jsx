@@ -1,9 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import { useState } from 'react'
 import { GlobalProvider } from './contexts/GlobalContext'
-import DefaultLayout from './layout/DefaultLayout'
-import Home from './pages/Home'
-
 
 function App() {
   const [movie, setMovie] = useState([]);
@@ -37,7 +34,13 @@ function App() {
           <ul>
             {movie.map((movie, index) => (
               <li key={index}>
-                {movie.title} - {movie.original_title} ({movie.original_language}) {movie.vote_average}
+                {movie.title} - {movie.original_title}
+                (<img
+                  src={`https://flagcdn.com/w40/${movie.original_language}.png`}
+                  alt={movie.original_language}
+                  style={{ maxWidth: "20px" }}
+                />)
+                {movie.vote_average}
               </li>
             ))}
           </ul>
