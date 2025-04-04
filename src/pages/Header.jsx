@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+/* import { useEffect, useState } from "react";
 import GlobalContext from "../contexts/GlobalContext";
 
 export default function Header() {
@@ -23,4 +23,4 @@ export default function Header() {
             </div>
         </header>
     );
-}
+} */

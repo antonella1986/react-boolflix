@@ -10,13 +10,29 @@ function GlobalProvider({ children }) {
         <GlobalContext.Provider
             value={{
                 movies,
-                setMovies
+                setMovies,
             }}
         >
             {children}
         </GlobalContext.Provider>
     );
 }
+
+//definisco la funzione useGlobal per utilizzare il contesto in altri componenti
+//questa funzione mi permette di accedere al contesto in altri componenti
+function useGlobal() {
+    const context = useContext(GlobalContext);
+    return context;
+}
+//esporto il contesto e la funzione useGlobal
+//in questo modo posso utilizzare il contesto in altri componenti
+export {GlobalProvider, useGlobal}
+
+
+
+
+
+
 
 
 /* export default GlobalContext;

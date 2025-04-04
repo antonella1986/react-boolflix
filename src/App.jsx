@@ -10,13 +10,10 @@ function App() {
   return (
     <>
       <GlobalProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route element={<DefaultLayout />}>
-              <Route path="/" element={<Home />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
+        <main>
+          <input type="text" />
+          <button placeholder="Search a movie" >Search</button>
+        </main>
       </GlobalProvider>
     </>
   )
