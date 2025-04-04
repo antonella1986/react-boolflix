@@ -10,12 +10,10 @@ function App() {
   const [searchMovie, setSearchMovie] = useState("");
 
   const handleSearch = () => {
-    const apiKey = "9a9ff049c4dbaad0ec878d76120e8689";
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(
-      searchMovie
-    )}`;
+    const api_key = import.meta.env.VITE_MOVIE_DB_API_KEY;
+    const base_movies_api_url = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${serchText}`
 
-    fetch(url)
+    fetch(base_movies_api_url)
       .then((response) => response.json())
       .then((data) => {
         setMovie(data.results || []);
