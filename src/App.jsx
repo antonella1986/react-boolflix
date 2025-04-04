@@ -1,5 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { GlobalProvider } from './contexts/GlobalContext'
+import DefaultLayout from './layout/DefaultLayout'
+import Home from './pages/Home'
+
 
 function App() {
 
@@ -9,7 +12,9 @@ function App() {
       <GlobalProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<h1>Home</h1>} />
+            <Route element={<DefaultLayout />}>
+              <Route path="/" element={<Home />} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </GlobalProvider>
