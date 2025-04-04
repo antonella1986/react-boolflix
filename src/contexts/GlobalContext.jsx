@@ -1,9 +1,25 @@
-import { createContext } from "react";
-import { useEffect } from "react";
+import { createContext, useContext } from "react";
+import { useState } from "react";
 
 const GlobalContext = createContext();
 
-export default GlobalContext;
+function GlobalProvider({ children }) {
+    const [movies, setMovies] = useState("");
+
+    return (
+        <GlobalContext.Provider
+            value={{
+                movies,
+                setMovies
+            }}
+        >
+            {children}
+        </GlobalContext.Provider>
+    );
+}
+
+
+/* export default GlobalContext;
 
 export const GlobalProvider = ({ children }) => {
 
@@ -20,6 +36,6 @@ export const GlobalProvider = ({ children }) => {
         {children}
         </GlobalContext.Provider>
     );
-}
+} */
 
 /* "https://developers.themoviedb.org/3/apy_key=9a9ff049c4dbaad0ec878d76120e8689" */
