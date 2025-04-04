@@ -1,7 +1,7 @@
 export default function Home() {
     return (
         <>
-            <h1>Boolflix</h1>
+            <h2>elenco film</h2>
         </>
     )
 }

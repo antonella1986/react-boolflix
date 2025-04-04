@@ -8,7 +8,7 @@ export default GlobalContext;
 export const GlobalProvider = ({ children }) => {
 
     useEffect(() => {
-        fetch("https://developers.themoviedb.org/3")
+        fetch("https://developers.themoviedb.org/3/apy_key=9a9ff049c4dbaad0ec878d76120e8689")
             .then(res => res.json())
             .then(data => setSearch(data))
             .catch(err => console.error(err))
