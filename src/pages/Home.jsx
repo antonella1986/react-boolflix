@@ -24,7 +24,7 @@ const handleSearch = () => {
 
     fetch(base_tvshow_api_url)
     .then((response) => response.json())
-    //prendiamo i film dalla risposta e li mettiamo nella nostra lista movie. se non ci sono film, mettiamo una lista vuota
+    //prendiamo le serie TV dalla risposta e li mettiamo nella nostra lista movie. se non ci sono film, mettiamo una lista vuota
     .then((data) => {
       setMovie(data.results || []);
     })
@@ -54,18 +54,20 @@ function getStars(vote) {
     return (
         <>
             <header>
-                <img src="./logo.png" alt="" srcSet="" />
-                <input
-                    type="text"
-                    placeholder="Search a movie"
-                    //mostriamo il testo scritto dall'utente
-                    value={searchMovie}
-                    //ogni volta che l'utente scrive qualcosa, aggiorniamo searchMovie
-                    onChange={e => setSearchMovie(e.target.value)}
-                    />
-                <button onClick={handleSearch}>Search</button>
-
-                </header>
+                <img className="logo" src="./logo.png" alt="" srcSet="" />
+                <div className="menu-dx">
+                    <input
+                        className="search-input"
+                        type="text"
+                        placeholder="Search a movie"
+                        //mostriamo il testo scritto dall'utente
+                        value={searchMovie}
+                        //ogni volta che l'utente scrive qualcosa, aggiorniamo searchMovie
+                        onChange={e => setSearchMovie(e.target.value)}
+                        />
+                    <button onClick={handleSearch}>Search</button>
+                </div>
+            </header>
             <h2>elenco film</h2>
             <ul>
                 {/*movie è l'array che contiene i film trovati. con map prendiamo ogni film della lista e li trasforniamo in <li>*/}
