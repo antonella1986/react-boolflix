@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import { useState } from 'react'
 import { GlobalProvider } from './contexts/GlobalContext'
+import DefaultLayout from './layout/DefaultLayout';
 
 function App() {
   //all'inizio movie è una lista vuota, setMovie è la funzione che ci serve ad aggiornare la lista dei film
