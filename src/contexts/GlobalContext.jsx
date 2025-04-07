@@ -26,7 +26,7 @@ function useGlobal() {
 }
 //esporto il contesto e la funzione useGlobal
 //in questo modo posso utilizzare il contesto in altri componenti
-export default {GlobalProvider, useGlobal}
+export {GlobalContext, GlobalProvider, useGlobal}
 
 
 

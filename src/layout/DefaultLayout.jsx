@@ -4,7 +4,6 @@ import Header from "../pages/Header";
 export default function DefaultLayout() {
   return (
     <>
-    <Header />
     <Outlet />
     </>
   );
