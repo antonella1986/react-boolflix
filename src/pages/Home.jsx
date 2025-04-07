@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function Home() {
 
 //all'inizio movie è una lista vuota, setMovie è la funzione che ci serve ad aggiornare la lista dei film
-const [movie, setMovie] = useState([]);
+const [movies, setMovies] = useState([]);
 //searchMovie all'inizio è vuota, qui ci metteremo il testo che l'utente scriverà nella ricerca, set aggiorna il testo scritto
 const [searchMovie, setSearchMovie] = useState("");
 
@@ -16,7 +16,7 @@ const handleSearch = () => {
     .then((response) => response.json())
     //prendiamo i film dalla risposta e li mettiamo nella nostra lista movie. se non ci sono film, mettiamo una lista vuota
     .then((data) => {
-      setMovie(data.results || []);
+      setMovies(data.results || []);
     })
     .catch((err) => {
       console.error(err);
@@ -26,7 +26,7 @@ const handleSearch = () => {
     .then((response) => response.json())
     //prendiamo le serie TV dalla risposta e li mettiamo nella nostra lista movie. se non ci sono film, mettiamo una lista vuota
     .then((data) => {
-      setMovie(data.results || []);
+      setMovies(data.results || []);
     })
     .catch((err) => {
       console.error(err);
@@ -65,30 +65,35 @@ function getStars(vote) {
                         //ogni volta che l'utente scrive qualcosa, aggiorniamo searchMovie
                         onChange={e => setSearchMovie(e.target.value)}
                         />
-                    <button onClick={handleSearch}>Search</button>
+                    <button className="search-button" onClick={handleSearch}>Search</button>
                 </div>
             </header>
-            <h2>elenco film</h2>
-            <ul>
-                {/*movie è l'array che contiene i film trovati. con map prendiamo ogni film della lista e li trasforniamo in <li>*/}
-                {movie.map((movie, index) => (
-                  <li key={index} style={{ marginBottom: '2rem' }}>
-                    <img
-                      src={movie.poster_path
-                          ? `https://image.tmdb.org/t/p/w342${movie.poster_path}`
-                          : 'https://via.placeholder.com/342x513?text=No+Image'
-                      }
-                      alt={movie.title}
-                      style={{ width: '150px', borderRadius: '10px' }}
-                    />
-                    {movie.title} - {movie.original_title}
-                    <div>
-                      Vote: {movie.vote_average}
-                      <div>{getStars(movie.vote_average)}</div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+
+            <h2>Your results:</h2>
+            <div className="results">
+                <ul>
+                    {/*movie è l'array che contiene i film trovati. con map prendiamo ogni film della lista e li trasforniamo in <li>*/}
+                    {movies.map((movie, index) => (
+                    <li key={index} style={{ marginBottom: '2rem' }}>
+                        <img
+                        src={movie.poster_path
+                            ? `https://image.tmdb.org/t/p/w342${movie.poster_path}`
+                            : 'https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg'
+                        }
+                        alt={movie.title}
+                        style={{ width: '150px', borderRadius: '10px' }}
+                        />
+                        <div className="description">
+                            <strong>Title:</strong> {movie.title} - <strong>Original title name:</strong> {movie.original_title}
+                            <div>
+                            <strong>Vote:</strong> {movie.vote_average}
+                            <div>{getStars(movie.vote_average)}</div>
+                            </div>
+                        </div>
+                    </li>
+                    ))}
+                </ul>
+            </div>
         </>
     )
 }
