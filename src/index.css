@@ -13,12 +13,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.results {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
 header {
   display: flex;
   justify-content: space-between;
@@ -51,8 +45,22 @@ h2 {
   margin: 0 !important;
 }
 
+ul {
+  margin: 0 !important;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
 li {
   list-style: none;
+  flex: 1 1 calc(33.333% - 1rem); /* Ogni elemento occupa un terzo della larghezza */
+  max-width: 300px; /* Limita la larghezza massima */
+  text-align: center; /* Centra il contenuto */
+  background-color: #333; /* Sfondo per distinguere gli elementi */
+  padding: 1rem;
+  border-radius: 8px;
 }
 
 @media (prefers-color-scheme: light) {

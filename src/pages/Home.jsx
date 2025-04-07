@@ -4,13 +4,15 @@ export default function Home() {
 
 //all'inizio movie è una lista vuota, setMovie è la funzione che ci serve ad aggiornare la lista dei film
 const [movies, setMovies] = useState([]);
+const [tvshow, setTvshow] = useState([]);
 //searchMovie all'inizio è vuota, qui ci metteremo il testo che l'utente scriverà nella ricerca, set aggiorna il testo scritto
 const [searchMovie, setSearchMovie] = useState("");
+const [searchTvshow, setSearchTvshow] = useState("");
 
 const handleSearch = () => {
   const api_key = import.meta.env.VITE_MOVIE_DB_API_KEY;
   const base_movies_api_url = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${searchMovie}`
-  const base_tvshow_api_url = `https://api.themoviedb.org/3/search/tv?api_key=${api_key}&query=${searchMovie}`
+  const base_tvshow_api_url = `https://api.themoviedb.org/3/search/tv?api_key=${api_key}&query=${searchTvshow}`
 
   fetch(base_movies_api_url)
     .then((response) => response.json())
@@ -26,7 +28,7 @@ const handleSearch = () => {
     .then((response) => response.json())
     //prendiamo le serie TV dalla risposta e li mettiamo nella nostra lista movie. se non ci sono film, mettiamo una lista vuota
     .then((data) => {
-      setMovies(data.results || []);
+      setTvshow(data.results || []);
     })
     .catch((err) => {
       console.error(err);
@@ -84,10 +86,15 @@ function getStars(vote) {
                         style={{ width: '150px', borderRadius: '10px' }}
                         />
                         <div className="description">
-                            <strong>Title:</strong> {movie.title} - <strong>Original title name:</strong> {movie.original_title}
                             <div>
-                            <strong>Vote:</strong> {movie.vote_average}
-                            <div>{getStars(movie.vote_average)}</div>
+                                <strong>Title:</strong> {movie.title}
+                            </div>
+                            <div>
+                                <strong>Original title name:</strong> {movie.original_title}
+                            </div>
+                            <div>
+                                <strong>Vote:</strong> {movie.vote_average}
+                                <div>{getStars(movie.vote_average)}</div>
                             </div>
                         </div>
                     </li>
